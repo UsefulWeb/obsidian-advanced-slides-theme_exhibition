@@ -1,2 +1,2 @@
-# obsidian-advanced-slides-theme_exhibition
+# Exhibition Theme
 Apple Keynote Exhibition Theme for Obsidian Advanced Slides Plugin
