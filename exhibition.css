@@ -1,0 +1,214 @@
+:root {
+  --gray-color: #5c5c5c;
+  --lightgray-color: #747676;
+  --darkgray-color: #747676;
+
+  --content-font-family: 'Iowan Old Style BT', serif;
+  --header-font-family: 'DIN Condensed', sans-serif;
+
+  --header-color: var(--gray-color);
+  --content-color: var(--lightgray-color);
+
+  --content-font-size: 38px;
+  --header-font-size: 111px;
+}
+
+
+.reveal [absolute] {
+  font-family: var(--content-font-family);
+  font-size: var(--content-font-size);
+  color: var(--content-color);
+
+  font-style: italic;
+
+  text-align: left;
+  align-items: start!important;
+}
+
+
+.reveal ul {
+  padding: 0;
+  list-style: none;
+}
+
+.reveal ul li::before {
+  content: '➤';
+  font-style: normal;
+  font-size: 0.7em;
+  margin-right: 13px;
+  vertical-align: middle;
+}
+
+.reveal li {
+  vertical-align: middle;
+  margin-bottom: 0.5em;
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  width: 100%;
+  font-family: var(--header-font-family);
+  font-size: var(--header-font-size);
+  color: var(--header-color);
+
+  font-style: normal;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* 171pt -> 111px (0.64x) */
+
+.reveal ul, 
+.reveal ol {
+  width: 100%;
+}
+
+/* only header */
+.reveal h2:only-child {
+  --header-font-size: 111px;
+  --header-color: var(--gray-color);
+
+  text-align: center;
+}
+!
+/* header + content */
+.reveal h2:not(:has(+ h3)) {
+  --header-font-size: 65px;
+}
+
+.reveal h2:not(:only-child) {
+  padding-bottom: 20px;
+}
+
+.reveal h2:not(:only-child)::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0px;
+  border-bottom: 4px dotted var(--darkgray-color);
+}
+
+.reveal h2:not(:only-child) + * {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.reveal img:only-child {
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  object-fit: cover!important;
+}
+
+/* header + subtitle */
+
+.reveal h2:has(+ h3) {
+  text-align: center;
+}
+
+.reveal h2 + h3 {
+  font-size: 45px;
+  text-align: center;
+
+  font-weight: normal;
+  font-style: italic;
+  text-transform: none;
+  font-family: var(--content-font-family);
+  color: var(--content-color);
+}
+
+/* header + subtitle + image */
+
+.reveal h2:has(+ h3 + img),
+.reveal h2 + h3:has(+ img) {
+  width: 50%;
+  text-align: right;
+}
+
+.reveal h2 + h3 + img {
+  width: 41%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  object-fit: cover!important;
+}
+
+.reveal [absolute]:has(h2 + h3 + img) {
+
+  padding: 30px;
+  box-sizing: border-box;
+  padding-right: 0;
+  justify-content: end!important;
+}
+
+/* image + header + subtitle */
+
+.reveal img:has(+ h2 + h3) {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover!important;
+  z-index: 1;
+}
+
+.reveal img + h2:has(+ h3),
+.reveal img + h2 + h3 {
+  position: relative;
+  z-index: 2;
+  text-align: right;
+
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+.reveal [absolute]:has(img + h2 + h3) {
+
+  padding: 30px 0;
+  box-sizing: border-box;
+  justify-content: end!important;
+}
+
+/* image + header + content */
+
+.reveal img:has(+ h2 ~ :not(h3)) {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover!important;
+}
+
+.reveal img + h2:has(~ :not(h3)) {
+  width: 41%;
+  --header-font-size: 54px;
+}
+
+.reveal img + h2 ~ :not(h3) {
+  width: 41%;
+  font-size: 32px;
+}
+
+
+.reveal [absolute]:has(img + h2 + :not(h3)) {
+
+  padding: 30px 0;
+  box-sizing: border-box;
+  align-items: end!important;
+  justify-content: start!important;
+}
+
+.reveal .controls {
+  font-size: 0.5em;
+  z-index: 100;
+  color: var(--content-color);
+}
+
